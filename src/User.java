@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class User {
-    Scanner scanner = new Scanner(System.in);
+
 
     protected String name;
     protected int cpf;
@@ -15,40 +15,22 @@ public class User {
         this.password = password;
     }
 
-    public User(String email, String password) {
-    }
-
-    public User() {
-    }
-
-    // logica de criar um novo user
-    public void questionUser() {
-            System.out.print("What do you want to do, register or log in? ");
-            var rl = scanner.nextLine();
-
-            if (rl.equalsIgnoreCase("register")) {
-                System.out.print("What is your name? ");
-                name = scanner.nextLine();
-
-                System.out.print("Enter your cpf: ");
-                var cpf1 = scanner.nextLine();
-                cpf = Integer.parseInt(cpf1);
-
-                System.out.print("Enter your email: ");
-                email = scanner.nextLine();
-
-                System.out.print("Enter your password: ");
-                password = scanner.nextLine();
-
-            } else if (rl.equalsIgnoreCase("log in")) {
-                Bank b = new Bank();
-                b.log();
-            }
-            while (rl.isBlank() || (!rl.equalsIgnoreCase("register") && !rl.equalsIgnoreCase("log in"))) {
-                System.out.print("Choose one of the previous options! ");
-                rl = scanner.nextLine();
-            }
-        }
+//    // logica de criar um novo user
+//    public void questionUser() {
+//
+//
+//            if (rl.equalsIgnoreCase("register")) {
+//
+//
+//            } else if (rl.equalsIgnoreCase("log in")) {
+//                Bank b = new Bank();
+//                b.log();
+//            }
+//            while (rl.isBlank() || (!rl.equalsIgnoreCase("register") && !rl.equalsIgnoreCase("log in"))) {
+//                System.out.print("Choose one of the previous options! ");
+//                rl = scanner.nextLine();
+//            }
+//        }
 
     public String getName() {
         return name;

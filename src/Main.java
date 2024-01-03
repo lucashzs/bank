@@ -1,13 +1,23 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
+        var scanner = new Scanner(System.in);
+        var bank = new Bank();
 
-        Bank bank = new Bank();
-        User u = new User();
+        while(true) {
+            System.out.print("[R] - Register | ");
+            System.out.print("[L] - Login | ");
 
-        bank.apresentation();
-        u.questionUser();
-       // bank.log();
-       // bank.logic();
+            var response = scanner.nextLine();
 
+            if (response.equalsIgnoreCase("R")) {
+                bank.registerUser();
+            } else if (response.equalsIgnoreCase("L")) {
+                bank.loginUser();
+            } else {
+
+            }
+        }
     }
 }
