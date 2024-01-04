@@ -32,10 +32,29 @@ public class Bank {
         var newUser = new User(name, cpf, email, password);
 
         this.users.add(newUser);
+
+        var userResponse = loginUser(email, password);
+        if (userResponse != null) {
+            userResponse.setLogged(true);
+            this.loggedUser = userResponse;
+        }
+    }
+
+    public User loginUser(String email, String password) {
+        var scanner = new Scanner(System.in);
+
+        User response = null;
+
+        for (User user : this.users) {
+            if (user.getEmail().equalsIgnoreCase(email) && user.getPassword().equalsIgnoreCase(password)) {
+                response = user;
+            }
+        }
+        return response;
     }
 
     public User loginUser() {
-        var scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
         System.out.print("Enter your email: ");
         var email = scanner.nextLine();
@@ -50,7 +69,6 @@ public class Bank {
                 response = user;
             }
         }
-
         return response;
     }
 

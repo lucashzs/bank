@@ -29,7 +29,7 @@ public class Main {
                     userResponse.setLogged(true);
                     bank.loggedUser = userResponse;
                 } else {
-                    System.out.println("Try a valid email...");
+                    System.out.println("Try a valid login...");
                 }
             } else if (response.equalsIgnoreCase("D")) {
                 bank.deposit();
@@ -37,12 +37,11 @@ public class Main {
                 bank.withdraw();
             } else if (response.equalsIgnoreCase("B")) {
                 bank.seeBalance();
-            } else if (response.equalsIgnoreCase("E")){
+            } else if (response.equalsIgnoreCase("E")) {
                 bank.exit();
-            } else if (response.equalsIgnoreCase("Y")){
+            } else if (response.equalsIgnoreCase("Y")) {
                 break;
-            }
-            else {
+            } else {
                 System.out.println("Choose a valid option");
             }
         }
