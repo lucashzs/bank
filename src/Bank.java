@@ -89,6 +89,13 @@ public class Bank {
         }
     }
 
+    public void exit() {
+        this.users.forEach((user) -> {
+            user.setLogged(false);
+        });
+        this.loggedUser = null;
+    }
+
     public void seeBalance() {
         hist.out("Balance $" + this.loggedUser.getBalance());
     }
