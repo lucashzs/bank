@@ -8,14 +8,15 @@ public class Main {
 
         while (true) {
             if (bank.loggedUser == null) {
-                System.out.print("[R] - Register | ");
-                System.out.print("[L] - Login | ");
+                System.out.println("[R] - Register  ");
+                System.out.println("[L] - Login  ");
+                System.out.println("[Y] - Exit Program  ");
 
             } else {
-                System.out.println("[D] - Deposit | ");
-                System.out.println("[W] - Withdraw | ");
-                System.out.println("[B] - See Balance | ");
-                System.out.println("[E] - Exit | ");
+                System.out.println("[D] - Deposit  ");
+                System.out.println("[W] - Withdraw  ");
+                System.out.println("[B] - See Balance  ");
+                System.out.println("[E] - Exit  ");
             }
 
             var response = scanner.nextLine();
@@ -38,7 +39,10 @@ public class Main {
                 bank.seeBalance();
             } else if (response.equalsIgnoreCase("E")){
                 bank.exit();
-            } else {
+            } else if (response.equalsIgnoreCase("Y")){
+                break;
+            }
+            else {
                 System.out.println("Choose a valid option");
             }
         }
