@@ -4,10 +4,10 @@ import java.util.Scanner;
 
 public class Bank {
     private List<User> users = new ArrayList<>();
-    private double totalMoney = 0f;
+    public User loggedUser = null;
     private Historic hist = new Historic();
 
-    public void apresentation() {
+    public void presentation() {
         System.out.println("-------------------------");
         System.out.println("  Welcome to Coins Bank  ");
         System.out.println("  The bank made for you  ");
@@ -34,7 +34,7 @@ public class Bank {
         this.users.add(newUser);
     }
 
-    public boolean loginUser() {
+    public User loginUser() {
         var scanner = new Scanner(System.in);
 
         System.out.print("Enter your email: ");
@@ -43,11 +43,11 @@ public class Bank {
         System.out.print("Enter your password: ");
         var password = scanner.nextLine();
 
-        var response = false;
+        User response = null;
 
         for (User user : this.users) {
             if (user.getEmail().equalsIgnoreCase(email) && user.getPassword().equalsIgnoreCase(password)) {
-                response = true;
+                response = user;
             }
         }
 
@@ -55,49 +55,42 @@ public class Bank {
     }
 
     // logica depositar
-//    public void deposit(double value) {
-//        money += value;
-//        hist.out("Deposit $" + money + " Now you have: $" + money);
-//    }
-//
-//    // logica de saque
-//    public boolean withDraw(double value) {
-//        if (money < value) {
-//            hist.out("WithDraw $" + money + " Your current balance is: $" + money);
-//            return false;
-//        } else {
-//            money -= value;
-//            hist.out("Now you have: $" + money);
-//            return true;
-//        }
-//    }
-//
-//    // logica usuario depositar/sacar/sair do banco
-//    public void logic() {
-//        while (true) {
-//            Scanner scanner = new Scanner(System.in);
-//            System.out.print("What operation do you want to perform?  Withdraw, Deposit, Exit ");
-//            String operation = scanner.nextLine();
-//
-//            if (operation.equalsIgnoreCase("deposit")) {
-//                System.out.print("What amount do you want to deposit? ");
-//                double value = scanner.nextDouble();
-//                deposit(value);
-//            } else if (operation.equalsIgnoreCase("withdraw")) {
-//                System.out.print("What amount do you want to withdraw? ");
-//                double value = scanner.nextDouble();
-//                if (!withDraw(value)) {
-//                    System.out.println("It was not possible to withdraw this amount!");
-//                }
-//            } else if (operation.equalsIgnoreCase("exit")) {
-//                System.out.println("________________________________");
-//                System.out.println("Account " + this.name + " " + "It has $" + money);
-//                break;
-//            } else {
-//                System.out.println("Enter a valid operation!");
-//            }
-//            scanner = new Scanner(System.in);
-//        }
-//    }
+    public void deposit() {
+        var scanner = new Scanner(System.in);
+        System.out.print("How many do you want to deposit? ");
+        var value = scanner.nextDouble();
+
+        this.users.forEach((user) -> {
+            if (user.getEmail().equalsIgnoreCase(this.loggedUser.getEmail())) {
+                user.setBalance(user.getBalance() + value);
+                this.loggedUser = user;
+            }
+        });
+
+        hist.out("Deposit $" + value + " Now you have: $" + loggedUser.getBalance());
+    }
+
+    // logica de saque
+    public void withdraw() {
+        var scanner = new Scanner(System.in);
+        System.out.print("How many do you want to withdraw? ");
+        var value = scanner.nextDouble();
+
+        if (this.loggedUser.getBalance() < value) {
+            hist.out("Withdraw Error $" + value + " You do not have enough balance!");
+        } else {
+            this.users.forEach((user) -> {
+                if (user.getEmail().equalsIgnoreCase(this.loggedUser.getEmail())) {
+                    user.setBalance(user.getBalance() - value);
+                    this.loggedUser = user;
+                }
+            });
+            hist.out("Withdraw $" + value + " Now you have: $" + loggedUser.getBalance());
+        }
+    }
+
+    public void seeBalance() {
+        hist.out("Balance $" + this.loggedUser.getBalance());
+    }
 }
 

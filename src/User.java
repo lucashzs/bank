@@ -1,12 +1,10 @@
-import java.util.Scanner;
-
 public class User {
-
-
     protected String name;
     protected int cpf;
     protected String email;
     protected String password;
+    protected double balance = 0f;
+    protected boolean isLogged = false;
 
     public User(String name, int cpf, String email, String password) {
         this.name = name;
@@ -14,23 +12,6 @@ public class User {
         this.email = email;
         this.password = password;
     }
-
-//    // logica de criar um novo user
-//    public void questionUser() {
-//
-//
-//            if (rl.equalsIgnoreCase("register")) {
-//
-//
-//            } else if (rl.equalsIgnoreCase("log in")) {
-//                Bank b = new Bank();
-//                b.log();
-//            }
-//            while (rl.isBlank() || (!rl.equalsIgnoreCase("register") && !rl.equalsIgnoreCase("log in"))) {
-//                System.out.print("Choose one of the previous options! ");
-//                rl = scanner.nextLine();
-//            }
-//        }
 
     public String getName() {
         return name;
@@ -62,5 +43,21 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isLogged() {
+        return isLogged;
+    }
+
+    public void setLogged(boolean logged) {
+        isLogged = logged;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 }

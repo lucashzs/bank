@@ -4,19 +4,38 @@ public class Main {
     public static void main(String[] args) {
         var scanner = new Scanner(System.in);
         var bank = new Bank();
+        bank.presentation();
 
-        while(true) {
-            System.out.print("[R] - Register | ");
-            System.out.print("[L] - Login | ");
+        while (true) {
+            if (bank.loggedUser == null) {
+                System.out.print("[R] - Register | ");
+                System.out.print("[L] - Login | ");
+            } else {
+                System.out.println("[D] - Deposit | ");
+                System.out.println("[W] - Withdraw | ");
+                System.out.println("[B] - See Balance | ");
+            }
 
             var response = scanner.nextLine();
 
             if (response.equalsIgnoreCase("R")) {
                 bank.registerUser();
             } else if (response.equalsIgnoreCase("L")) {
-                bank.loginUser();
+                var userResponse = bank.loginUser();
+                if (userResponse != null) {
+                    userResponse.setLogged(true);
+                    bank.loggedUser = userResponse;
+                } else {
+                    System.out.println("Try a valid email...");
+                }
+            } else if (response.equalsIgnoreCase("D")) {
+                bank.deposit();
+            } else if (response.equalsIgnoreCase("W")) {
+                bank.withdraw();
+            } else if (response.equalsIgnoreCase("B")) {
+                bank.seeBalance();
             } else {
-
+                System.out.println("Choose a valid option");
             }
         }
     }
