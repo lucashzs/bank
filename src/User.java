@@ -45,19 +45,19 @@ public class User {
         this.password = password;
     }
 
-    public boolean isLogged() {
-        return isLogged;
-    }
-
-    public void setLogged(boolean logged) {
-        isLogged = logged;
-    }
-
     public double getBalance() {
         return balance;
     }
 
     public void setBalance(double balance) {
         this.balance = balance;
+    }
+
+    public boolean isLogged() {
+        return isLogged;
+    }
+
+    public void setLogged(boolean logged) {
+        isLogged = logged;
     }
 }

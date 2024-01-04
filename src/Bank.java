@@ -40,9 +40,8 @@ public class Bank {
         }
     }
 
-    public User loginUser(String email, String password) {
-        var scanner = new Scanner(System.in);
-
+    //logica de verificar emails/senhas de usuarios
+    public User verifyCorrectUser(String email, String password) {
         User response = null;
 
         for (User user : this.users) {
@@ -53,6 +52,13 @@ public class Bank {
         return response;
     }
 
+    //logica de logar depois de se registrar-se
+    public User loginUser(String email, String password) {
+
+        return verifyCorrectUser(email, password);
+    }
+
+    //logica de logar depois de um usuario ja logado
     public User loginUser() {
         Scanner scanner = new Scanner(System.in);
 
@@ -62,14 +68,7 @@ public class Bank {
         System.out.print("Enter your password: ");
         var password = scanner.nextLine();
 
-        User response = null;
-
-        for (User user : this.users) {
-            if (user.getEmail().equalsIgnoreCase(email) && user.getPassword().equalsIgnoreCase(password)) {
-                response = user;
-            }
-        }
-        return response;
+        return verifyCorrectUser(email, password);
     }
 
     // logica depositar
