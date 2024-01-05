@@ -71,6 +71,11 @@ public class Bank {
         return verifyCorrectUser(email, password);
     }
 
+    public List<String> extract() {
+        // criar uma string dos saques e depositos > dentro do array extracts
+    }
+
+
     // logica depositar
     public void deposit() {
         var scanner = new Scanner(System.in);

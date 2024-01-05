@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 public class User {
     protected String name;
     protected int cpf;
@@ -5,6 +7,8 @@ public class User {
     protected String password;
     protected double balance = 0f;
     protected boolean isLogged = false;
+
+    private List<String> extracts = new ArrayList<>();
 
     public User(String name, int cpf, String email, String password) {
         this.name = name;

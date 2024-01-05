@@ -16,6 +16,7 @@ public class Main {
                 System.out.println("[D] - Deposit  ");
                 System.out.println("[W] - Withdraw  ");
                 System.out.println("[B] - See Balance  ");
+                System.out.println("[X] - Extract  ");
                 System.out.println("[E] - Exit  ");
             }
 
@@ -39,6 +40,12 @@ public class Main {
                 bank.seeBalance();
             } else if (response.equalsIgnoreCase("E")) {
                 bank.exit();
+            } else if (response.equalsIgnoreCase("X")){
+                // logica de extrato
+
+
+
+
             } else if (response.equalsIgnoreCase("Y")) {
                 break;
             } else {
