@@ -71,8 +71,13 @@ public class Bank {
         return verifyCorrectUser(email, password);
     }
 
+    // criar uma string dos saques e depositos > dentro do array extracts
     public List<String> extract() {
-        // criar uma string dos saques e depositos > dentro do array extracts
+
+
+        hist.out("Deposit $" + loggedUser.getBalance());
+
+
     }
 
 
