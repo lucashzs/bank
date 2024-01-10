@@ -40,7 +40,7 @@ public class Bank {
         }
     }
 
-    //logica de verificar emails/senhas de usuarios
+    //Logic for checking user emails/passwords
     public User verifyCorrectUser(String email, String password) {
         User response = null;
 
@@ -52,13 +52,13 @@ public class Bank {
         return response;
     }
 
-    //logica de logar depois de se registrar-se
+    //Login logic after registering
     public User loginUser(String email, String password) {
 
         return verifyCorrectUser(email, password);
     }
 
-    //logica de logar depois de um usuario ja logado
+    //Logic of logging in directly after a user is already logged in
     public User loginUser() {
         Scanner scanner = new Scanner(System.in);
 
@@ -71,17 +71,7 @@ public class Bank {
         return verifyCorrectUser(email, password);
     }
 
-    // criar uma string dos saques e depositos > dentro do array extracts
-    public List<String> extract() {
-
-
-        hist.out("Deposit $" + loggedUser.getBalance());
-
-
-    }
-
-
-    // logica depositar
+    //Deposit logic
     public void deposit() {
         var scanner = new Scanner(System.in);
         System.out.print("How many do you want to deposit? ");
@@ -97,7 +87,7 @@ public class Bank {
         hist.out("Deposit $" + value + " Now you have: $" + loggedUser.getBalance());
     }
 
-    // logica de saque
+    //Withdrawal logic
     public void withdraw() {
         var scanner = new Scanner(System.in);
         System.out.print("How many do you want to withdraw? ");
@@ -127,4 +117,3 @@ public class Bank {
         hist.out("Balance $" + this.loggedUser.getBalance());
     }
 }
-
